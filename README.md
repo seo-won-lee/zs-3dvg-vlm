@@ -15,6 +15,7 @@ We investigate the effects of multi-view perception, query reconstruction, and i
 
 ## Implementation
 To reproduce our results, please first follow the original SeeGround setup.
+
 Then replace or update the following components with the implementations provided in this repository:
 
 - Multi-view projection module
@@ -26,4 +27,5 @@ Then replace or update the following components with the implementations provide
 ## Acknowledgement
 
 This codebase is built upon [SeeGround (Apache-2.0)](https://github.com/iris0329/SeeGround). 
+
 We sincerely thank the authors for releasing their code.
