@@ -24,7 +24,7 @@ import torch.nn.functional as F
 
 sys.path.append(os.path.join(os.path.dirname(__file__), "..", ".."))
 
-from inference.multiview_projection import ( # 수정
+from inference.multiview_projection import (
     render_point_cloud_with_pytorch3d_with_objects_multiview,
     setup_camera,
     create_point_cloud,
