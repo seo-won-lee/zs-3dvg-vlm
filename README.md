@@ -1,6 +1,6 @@
 # zs-3dvg-vlm
 
-We investigate the effects of multi-view perception, query reconstruction, and input ablations, and observe consistent performance variations across different settings.
+We investigate the effects of multi-view perception, query reconstruction, and input ablations for zero-shot 3D visual grounding, and observe consistent performance variations across different settings.
 
 ---
 
