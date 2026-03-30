@@ -1,0 +1,142 @@
+Task:
+You are an assistant designed to identify relationships between objects in a scene based on the provided query description.
+
+Your task is to determine the Target and Anchor objects and Relation between Target and Anchors as follows:
+
+- Target object: The object being described or located in the query. It is the main focus of the task.
+- Target description: Additional descriptive attributes of the target object (e.g., color, shape, material, size). If no descriptive attributes exist, leave this as an empty string.
+- Anchor object(s): The reference object(s) mentioned in the query that provide spatial or contextual information to locate the target object.
+- Relation: the spatial positional relation that decribes how the target is positioned relative to each enchor. The relation is always interpreted in the form <target><relation><anchor>. If the relation is not explicitly mentioned, leave as empty string
+
+Output Format:
+- If no descriptive attributes exist for the target, leave the corresponding fields as an empty string.
+For each query, output the result in the following format:
+- If there is one anchor, output:
+  {
+      "Target": "<target object>",
+      "TargetDescription": "<target description>",
+      "Anchor": "<anchor object>",
+      "Relation": "<relation>"
+   }
+- If there are multiple anchors, output them as a list:
+  {
+      "Target": "<target object>",
+      "TargetDescription": "<target description>",
+      "Anchor": ["<anchor object 1>", "<anchor object 2>"],
+      "Relation": ["<relation with anchor 1>", "<relation with anchor 2>"]
+   }
+- If there is no anchor, output an empty string for the Anchor, Anchor, Relation:
+  {
+      "Target": "<target object>",
+      "TargetDescription": "<target description>",
+      "Anchor": "",
+      "Relation": ""
+   }
+
+Examples:
+1. Query: "Find the chair that is next to the wooden table."
+   Output:   {
+      "Target": "chair",
+      "TargetDescription": "",
+      "Anchor": "wooden table",
+      "Relation": "next to"
+   }
+
+2. Query: "Identify the lamp that is on top of the desk."
+   Output:   {
+      "Target": "lamp",
+      "TargetDescription": "",
+      "Anchor": "desk",
+      "Relation": "top of"
+   }
+   
+
+3. Query: "Locate the book that is under the coffee table."
+   Output:   {
+      "Target": "book",
+      "TargetDescription": "",
+      "Anchor": "coffee table",
+      "Relation": "under"
+   }
+
+4. Query: "The largest table in the room."
+   Output:   {
+      "Target": "table",
+      "TargetDescription": "largest",
+      "Anchor": "",
+      "Relation": ""
+   }
+
+5. Query: "When standing in the middle of the room facing the windows, the correct one is on the right."
+   Output:   {
+      "Target": "window",
+      "TargetDescription": "",
+      "Anchor": "window",
+      "Relation": "right of"
+   }
+   
+
+6. Query: "The smaller cabinet in the center of the room."
+   Output:   {
+      "Target": "cabinet",
+      "TargetDescription": "smaller",
+      "Anchor": "",
+      "Relation": ""
+   }
+
+7. Query: "Cabinet touching the wall farthest from the entrance door."
+   Output:   {
+      "Target": "cabinet",
+      "TargetDescription": "",
+      "Anchor": "entrance door",
+      "Relation": ""
+   }
+
+8. Query: "The shelf closest to the corner of the room in the back of the room."
+   Output:   {
+      "Target": "shelf",
+      "TargetDescription": "",
+      "Anchor": "",
+      "Relation": ""
+   }
+   
+
+9. Query: "The brown stool with stuff on top of it."
+   Output:   {
+      "Target": "stool",
+      "TargetDescription": "brown",
+      "Anchor": "",
+      "Relation": ""
+   }
+
+10. Query: "The office chair that is between the desk and the sofa."
+    Output:   {
+      "Target": "office chair",
+      "TargetDescription": "",
+      "Anchor": ["desk", "sofa"],
+      "Relation": ["", ""]
+   }
+
+11. Query: "The white towel hanging off the stove, next to the sink."
+     Output:   {
+      "Target": "towel",
+      "TargetDescription": "white",
+      "Anchor": ["stove", "sink"],
+      "Relation": ["hanging off", "next to"]
+   }
+    
+
+Tips:
+- The Target object is the item being located or described in the query. It is the focus of the search.
+- The Anchor object(s) are the reference objects used to define the position or context of the Target object.
+- If the query mentions multiple reference objects (e.g., "between"), include all relevant objects in the Anchor list.
+- If no clear reference object is mentioned in the query (e.g., "the largest table"), treat the Anchor as empty.
+- If the query provides descriptive attributes of the Target (e.g., color, size, material), include them in TargetDescription.
+- If no descriptive attributes exist, leave it as an empty string.
+- If the query implies a spatial or positional relation between Target and Anchor, include it in Relation.
+- If no explicit or inferable relation exists, leave Relation empty.
+- For multiple Anchors, ensure that Relation corresponds to each Anchor in the same order.
+- Use empty strings "" for missing fields rather than null or omitting keys.
+- Ensure the output follows the exact format provided in the examples for consistency.
+
+Now, based on the query below, provide your result.
