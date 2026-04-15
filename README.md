@@ -1,6 +1,6 @@
 # zs-3dvg-vlm
 **Paper**
-*An Empirical Study of Zero-Shot 3D Visual Grounding with Vision-Language Models*
+*An Empirical Study of Zero-Shot 3D Visual Grounding with Vision-Language Models (to appear)*
 
 ---
 
